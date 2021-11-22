@@ -1,0 +1,12 @@
+.form-floating .help-block{
+  display: none;
+}
+form.mezzanine-form input, form.mezzanine-form textarea{
+  width: 100%;
+}
+.site-heading .meta a {
+  color: white;
+}
+#comment .form-floating label{
+  opacity: 1;
+}

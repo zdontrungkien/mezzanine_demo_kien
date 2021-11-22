@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load mezzanine_tags keyword_tags %}
+
+{% block meta_title %}{{ page.meta_title }}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+{% editable page.title %}{{ page.title }}{% endeditable %}
+{% endblock %}
+
+{% block pageheader %}
+<!-- Page Header-->
+<header class="masthead" {% if request.path == '/about/' %} style=" background-image: url('{{STATIC_URL}}assets/img/about-bg.jpg')" 
+{% elif request.path == '/testing/' %}style=" background-image: url('{{STATIC_URL}}assets/img/post-bg.jpg')"
+{% elif request.path == '/contact/' %}style=" background-image: url('{{STATIC_URL}}assets/img/contact-bg.jpg')"
+{% endif %} >
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                {% if request.path == '/about/' %}
+                    <h1>About</h1>
+                {% elif request.path == '/contact/' %}
+                    <h1>Contact</h1>
+                {% else %}
+                    <h1>Clean Blog</h1>
+                {% endif %}
+                    <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+{% endblock %}
+
+{% block main %}
+{% endblock %}
